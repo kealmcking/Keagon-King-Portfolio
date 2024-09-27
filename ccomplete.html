@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<!-- saved from url=(0020)https://carsonk.net/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Keagon King – I make games!</title>
+
+        <meta property="og:title" content="">
+        <meta property="og:locale" content="en_US">
+        <meta name="description" content="">
+        <meta property="og:description" content="">
+        <link rel="canonical" href="https/">
+        <meta property="og:url" content="">
+        <meta property="og:site_name" content="">
+        <meta property="og:type" content="website">
+        
+            <meta property="og:image" content="https://placehold.co/400.png">
+        <meta name="twitter:card" content="summary">
+        <meta property="twitter:title" content="">
+
+            
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    
+    <meta name="description" content="I make games!">
+    <meta property="og:description" content="I make games!">
+    
+    <meta name="author" content="Keagon King">
+
+    
+
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <link rel="stylesheet" type="text/css" href="./ccomplete_files/style.css">
+        <link rel="alternate" type="application/rss+xml" title="Keagon King - I make games and gameart!" href="https://carsonk.net/feed.xml">
+        <script type="text/javascript" async="" src="./ccomplete_files/js"></script><script async="" src="./ccomplete_files/analytics.js.download"></script><script id="twitter-wjs" src="./ccomplete_files/widgets.js.download"></script><script src="./ccomplete_files/flickity.min.js.download"></script>
+        <script>window.twttr = (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+              t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+          
+            t._e = [];
+            t.ready = function(f) {
+              t._e.push(f);
+            };
+          
+            return t;
+          }(document, "script", "twitter-wjs"));
+        </script>
+    </head>
+
+    <body>
+        <div class="wrapper-masthead fade-me-in">
+    <div class="container">
+        <header class="masthead clearfix">
+            <img class="site-avatar large" src="images/37821318.jpg">
+            <div class="site-info">
+                <h1 class="site-name"><a href="ccomplete.html">Keagon King</a></h1>
+                <div class="site-icons">
+                  <a href="https://github.com/kealmcking">
+                    <i class="svg-icon github"></i>
+                  </a>
+                  <a href="https://kealmcking.itch.io/">
+                    <i class="svg-icon itch"></i>
+                  </a>
+                </div>
+                <nav class="left">
+                    <a href="ccomplete.html">My Work</a>
+                    <a href="aboutme.html">About Me</a>
+                </nav>
+            </div>
+        </header>
+    </div>
+</div>
+
+<div id="main" role="main" class="container  fade-in-content-slow">
+
+<h1>Games</h1>
+<div class="games-grid">
+  <a href="poseidon.html" class="game-link">
+    <div class="game-item">
+      <img src="images/poseidon/poseidon1.png" alt="Poseidon Is Not Calm">
+      <h3>Poseidon Is Not Calm</h3>
+    <p>A physics based ball auto-battler!</p>
+    </div>
+  </a>
+  <a href="cosmicgolf.html" class="game-link">
+    <div class="game-item">
+      <img src="images/cosmicGolf/cosmicgolf1.png" alt="Cosmic Golf">
+      <h3>Cosmic Golf</h3>
+      <p>A physics based ball auto-battler!</p>
+    </div>
+  </a>
+  <a href="sender.html" class="game-link">
+    <div class="game-item">
+      <img src="images/sender/sender1.png" alt="Sender: Arbitration">
+      <h3>Cosmic Golf</h3>
+      <p>A physics based ball auto-battler!</p>
+    </div>
+  </a>
+  <a href="battleballs.html" class="game-link">
+    <div class="game-item">
+      <img src="images/battleballs/battleballs.png" alt="Battle Balls">
+      <h3>Battle Balls</h3>
+    <p>A physics based ball auto-battler!</p>
+    </div>
+  </a>
+  <a href="bonechasm.html" class="game-link">
+    <div class="game-item">
+      <img src="images/bonechasm/bonechasm4.png" alt="Bone Chasm">
+      <h3>Bone Chasm</h3>
+    <p>A physics based ball auto-battler!</p>
+    </div>
+  </a>
+</div>
+<!---
+  <a href="https://carsonk.net/works/games">
+    <p style="text-align: center; margin: 0;"><span class="show-all">Show All</span> =&gt;</p>
+  </a>
+--->
+<!---
+<h1>Other</h1>
+<div class="games-grid">
+  <div class="game-item">
+  </div>
+</div>
+-->
+
+<!--
+  <a href="https://carsonk.net/works/other">
+    <p style="text-align: center; margin: 0;"><span class="show-all">Show All</span> =&gt;</p>
+  -->
+<!---------------->
+<script>
+
+    var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+            delta = this.period;
+            this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+            this.isDeleting = false;
+            this.loopNum++;
+            delta = 500;
+        }
+
+        setTimeout(function() {
+            that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+    };
+
+</script>
+        </div>
+
+        
+            <div class="wrapper-footer">
+    <div class="container">
+        <footer class="footer">
+        
+
+    <div class="tooltip">
+        <a href="https://github.com/kealmcking">
+            <i class="svg-icon github"></i>
+        </a>
+        <span class="tooltiptext">Github</span>
+    </div>
+
+    <div class="tooltip">
+        <a href="https://kealmcking.itch.io/">
+            <i class="svg-icon itch"></i>
+        </a>
+        <span class="tooltiptext">itch.io</span>
+    </div>
+        </footer>
+    </div>
+</div>
+        
+
+        
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-47528442-5', 'auto');
+		ga('send', 'pageview', {
+		  'page': '/',
+		  'title': ''
+		});
+	</script>
+	<!-- End Google Analytics -->
+
+
+    
+
+    <script>
+
+        // Remove all fade-me-in classes if document.referrer is a page of ours
+        if(document.referrer.indexOf(window.location.hostname) > -1)
+        {
+            let fadeMeInEls = document.querySelectorAll('.fade-me-in');
+            for(let i = 0; i < fadeMeInEls.length; i++)
+            {
+                let fadeMeInEl = fadeMeInEls[i];
+                fadeMeInEl.classList.remove('fade-me-in');
+                fadeMeInEl.style.opacity = 1;
+            }
+        }
+
+        // Variables
+        let tickerSpeed = 0.33;
+        let flicks = {};
+        let slideshowEls = document.querySelectorAll('.js-slideshow');
+
+        // Functions
+        const update = (flickity) => {
+            if(!flickity) return;
+            if(flickity.isPaused) return;
+            if(!flickity.slides) return;
+            flickity.x = (flickity.x - flickity.tickerSpeed) % flickity.slideableWidth;
+            flickity.selectedIndex = flickity.dragEndRestingSelect();
+            flickity.updateSelectedSlide();
+            flickity.settle(flickity.x);
+            window.requestAnimationFrame(() => update(flickity));
+        };
+
+        const pause = (e) => {
+            let flickity = e.target.flickityInstance
+            flickity.isPaused = true;
+        };
+
+        const play = (e) => {
+            let flickity = e.target.flickityInstance
+            if (flickity.isPaused) {
+                flickity.isPaused = false;
+                window.requestAnimationFrame(() => update(flickity));
+            }
+        };
+
+        for(let i = 0; i < slideshowEls.length; i++)
+        {
+            let slideshowEl = slideshowEls[i];
+
+            if(slideshowEl.classList.contains('dont-enable'))
+            {
+                continue;
+            }
+
+            // Create Flickity
+            let flickity = new Flickity(slideshowEl, {
+                autoPlay: false,
+                prevNextButtons: true,
+                pageDots: false,
+                draggable: true,
+                wrapAround: true,
+                selectedAttraction: 0.015,
+                friction: 0.25
+            });
+            flickity.x = 0;
+            flickity.isPaused = false;
+            flickity.tickerSpeed = tickerSpeed;
+            slideshowEl.flickityInstance = flickity;
+
+            // Has reverse class
+            if(slideshowEl.classList.contains('reverse'))
+            {
+                flickity.tickerSpeed = -tickerSpeed;
+            }
+
+            // Add Event Listeners
+            slideshowEl.addEventListener('mouseenter', pause, false);
+            slideshowEl.addEventListener('focusin', pause, false);
+            slideshowEl.addEventListener('mouseleave', play, false);
+            slideshowEl.addEventListener('focusout', play, false);
+
+            flickity.on('dragStart', () => {
+                flickity.isPaused = true;
+            });
+        
+            // Start Ticker
+            window.requestAnimationFrame(() => update(flickity));
+        }
+
+    </script>
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./ccomplete_files/widget_iframe.2f70fb173b9000da126c79afe2098f02.html" title="Twitter settings iframe" style="display: none;"></iframe><div id="suspender_tab_manager"><template shadowrootmode="open"><div><!----><style>@import url(chrome-extension://laameccjpleogmfhilmffpdbiibgbekf/assets/tab-manager.css);</style></div></template></div><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./ccomplete_files/saved_resource.html"></iframe></body></html>
