@@ -790,6 +790,7 @@ code {
   width: 40px;
   height: 40px;
   background-size: contain;
+  background-repeat: no-repeat;
   display: inline-block;
 }
 .svg-icon.github {
