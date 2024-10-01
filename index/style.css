@@ -1056,6 +1056,13 @@ code {
   color: white;
 }
 
+.sitelinks i {
+  width: 32px;
+  height: 32px;
+  font-size: 32px;
+  color: white;
+}
+
 @media screen and (max-width: 640px) {
   .site-info {
     float: none;
