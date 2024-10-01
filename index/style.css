@@ -696,9 +696,10 @@ code {
 
 /* Generic.Inserted & Diff Inserted */
 .tooltip {
-  position: relative;
-  display: inline-block;
-  z-index: 1;
+  width: 32px;
+  height: 32px;
+  font-size: 32px;
+  color: white;
 }
 
 .tooltip .tooltiptext {
@@ -1046,10 +1047,15 @@ code {
   flex-direction: row;
   gap: 0.5em;
 }
-.site-info .site-icons .svg-icon {
+
+/* THis is the font-awesome icons */
+.site-info .site-icons i {
   width: 32px;
   height: 32px;
+  font-size: 32px;
+  color: white;
 }
+
 @media screen and (max-width: 640px) {
   .site-info {
     float: none;
