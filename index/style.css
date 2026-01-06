@@ -1007,6 +1007,7 @@ code {
   flex-direction: row;
   align-items: center;
   flex-grow: 1;
+  justify-content: flex-start;
 }
 @media screen and (max-width: 640px) {
   .masthead {
@@ -1024,6 +1025,7 @@ code {
   height: 70px;
   margin-right: 15px;
   border-radius: 16px;
+  display: none; /* Hidden for now */
 }
 .site-avatar.large {
   width: 128px;
@@ -1041,11 +1043,16 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  flex: 1;
+  text-align: center;
 }
 .site-info .site-icons {
   display: flex;
   flex-direction: row;
   gap: 0.5em;
+  justify-content: center;
+  align-items: center;
 }
 
 /* THis is the font-awesome icons */
@@ -1099,13 +1106,18 @@ nav {
   font-size: 18px;
 }
 nav.left {
-  float: left;
+  float: none;
   width: auto;
   margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 nav.left a {
   margin-left: 0px;
-  margin-right: 20px;
+  margin-right: 0px;
 }
 @media screen and (max-width: 640px) {
   nav.left {
@@ -2204,5 +2216,659 @@ footer {
   }
   50% {
     border-color: white;
+  }
+}
+
+/* About Me Page Styles */
+.about-section {
+  margin-bottom: 20px;
+}
+
+.about-section .blurb {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(243, 252, 240, 0.85);
+  text-align: left;
+  margin-top: 10px;
+}
+
+/* Center resume area on about page */
+.about-page .workcontent {
+  justify-content: center;
+  align-items: center;
+}
+
+.about-page .workentry {
+  width: auto;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Resume Section - Centered and Styled */
+.resume-section {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.resume-section .resume-name {
+  font-size: 28px;
+  font-weight: 700;
+  color: #F3FCF0;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  font-family: "Poppins", serif;
+}
+
+.resume-section .resume-title {
+  font-size: 20px;
+  color: rgba(243, 252, 240, 0.9);
+  margin-bottom: 10px;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.resume-section .resume-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.resume-section .resume-contact p {
+  font-size: 16px;
+  color: rgba(243, 252, 240, 0.85);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.resume-section .resume-contact i {
+  width: 20px;
+  text-align: center;
+  color: rgba(243, 252, 240, 0.7);
+}
+
+.resume-section .resume-contact a {
+  color: rgba(243, 252, 240, 0.85);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.resume-section .resume-contact a:hover {
+  color: #F3FCF0;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 640px) {
+  .resume-section .resume-name {
+    font-size: 24px;
+  }
+  
+  .resume-section .resume-title {
+    font-size: 18px;
+  }
+  
+  .resume-section .resume-contact p {
+    font-size: 14px;
+  }
+}
+
+/* Update resume-contact to not center experience entries */
+.resume-section .resume-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Override alignment for experience entries container */
+.resume-section .resume-contact > h3 {
+  width: 200%;
+  text-align: center;
+  margin-top: 3px;
+  margin-bottom: 2px;
+}
+
+/* Section divider lines */
+.resume-section .line {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(243, 252, 240, 0.2);
+  margin: 3px 0;
+  border: none;
+}
+
+/* Skills Section */
+.skills-section {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  width: 100%;
+}
+
+/* Work Experience Section - Collapsible */
+.work-experience-section {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  width: 100%;
+}
+
+.work-experience-header {
+  cursor: pointer;
+  user-select: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  position: relative;
+  padding: 8px 12px;
+  padding-left: 24px;
+  margin-bottom: 4px;
+}
+
+.work-experience-header:hover {
+  background-color: rgba(243, 252, 240, 0.05);
+}
+
+.work-experience-header:active {
+  transform: scale(0.98);
+  background-color: rgba(243, 252, 240, 0.1);
+}
+
+.work-experience-header::before {
+  content: '▶';
+  font-size: 10px;
+  color: rgba(243, 252, 240, 0.7);
+  transition: transform 0.3s ease, color 0.2s ease;
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.work-experience-header:hover::before {
+  color: rgba(243, 252, 240, 0.9);
+}
+
+.work-experience-section.collapsed .work-experience-header::before {
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.work-experience-header h3 {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.work-experience-header:hover h3 {
+  color: rgba(243, 252, 240, 0.95);
+}
+
+.work-experience-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 2000px;
+  opacity: 1;
+}
+
+.work-experience-section.collapsed .work-experience-content {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Education Section - Collapsible */
+.education-section {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  width: 100%;
+}
+
+.education-header {
+  cursor: pointer;
+  user-select: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  position: relative;
+  padding: 8px 12px;
+  padding-left: 24px;
+  margin-bottom: 4px;
+}
+
+.education-header:hover {
+  background-color: rgba(243, 252, 240, 0.05);
+}
+
+.education-header:active {
+  transform: scale(0.98);
+  background-color: rgba(243, 252, 240, 0.1);
+}
+
+.education-header::before {
+  content: '▶';
+  font-size: 10px;
+  color: rgba(243, 252, 240, 0.7);
+  transition: transform 0.3s ease, color 0.2s ease;
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.education-header:hover::before {
+  color: rgba(243, 252, 240, 0.9);
+}
+
+.education-section.collapsed .education-header::before {
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.education-header h3 {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.education-header:hover h3 {
+  color: rgba(243, 252, 240, 0.95);
+}
+
+.education-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 2000px;
+  opacity: 1;
+}
+
+.education-section.collapsed .education-content {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Projects Section - Collapsible */
+.projects-section {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  width: 100%;
+}
+
+.projects-header {
+  cursor: pointer;
+  user-select: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  position: relative;
+  padding: 8px 12px;
+  padding-left: 24px;
+  margin-bottom: 4px;
+}
+
+.projects-header:hover {
+  background-color: rgba(243, 252, 240, 0.05);
+}
+
+.projects-header:active {
+  transform: scale(0.98);
+  background-color: rgba(243, 252, 240, 0.1);
+}
+
+.projects-header::before {
+  content: '▶';
+  font-size: 10px;
+  color: rgba(243, 252, 240, 0.7);
+  transition: transform 0.3s ease, color 0.2s ease;
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.projects-header:hover::before {
+  color: rgba(243, 252, 240, 0.9);
+}
+
+.projects-section.collapsed .projects-header::before {
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.projects-header h3 {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.projects-header:hover h3 {
+  color: rgba(243, 252, 240, 0.95);
+}
+
+.projects-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 2000px;
+  opacity: 1;
+}
+
+.projects-section.collapsed .projects-content {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.skills-header {
+  cursor: pointer;
+  user-select: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  position: relative;
+  padding: 8px 12px;
+  padding-left: 24px;
+  margin-bottom: 4px;
+}
+
+.skills-header:hover {
+  background-color: rgba(243, 252, 240, 0.05);
+}
+
+.skills-header:active {
+  transform: scale(0.98);
+  background-color: rgba(243, 252, 240, 0.1);
+}
+
+.skills-header::before {
+  content: '▶';
+  font-size: 10px;
+  color: rgba(243, 252, 240, 0.7);
+  transition: transform 0.3s ease, color 0.2s ease;
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.skills-header:hover::before {
+  color: rgba(243, 252, 240, 0.9);
+}
+
+.skills-section.collapsed .skills-header::before {
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.skills-header h3 {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.skills-header:hover h3 {
+  color: rgba(243, 252, 240, 0.95);
+}
+
+.skills-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 1000px;
+  opacity: 1;
+}
+
+.skills-section.collapsed .skills-content {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+  gap: 24px;
+  margin-top: 16px;
+  padding: 0 20px;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.skill-category {
+  text-align: left;
+}
+
+.skill-category h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #F3FCF0;
+  margin-bottom: 8px;
+  font-family: "Poppins", serif;
+}
+
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-list li {
+  font-size: 14px;
+  color: rgba(243, 252, 240, 0.8);
+  line-height: 1.8;
+  padding-left: 16px;
+  position: relative;
+}
+
+.skill-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: rgba(243, 252, 240, 0.6);
+  font-weight: bold;
+}
+
+@media screen and (max-width: 640px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 10px;
+  }
+  
+  .skill-category h4 {
+    font-size: 15px;
+  }
+  
+  .skill-list li {
+    font-size: 13px;
+  }
+}
+
+/* Work Experience Entry Style */
+.experience-entry {
+  margin-bottom: 3px;
+  width: 100%; /* Ensure full width */
+  max-width: 100%; /* Prevent any width constraints */
+}
+
+.experience-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  margin-bottom: 4px;
+  gap: 200px; /* Space between company and date */
+  width: 100%; /* Ensure full width */
+  padding: 0;
+}
+
+.experience-company {
+  font-weight: 600;
+  font-size: 18px;
+  color: #F3FCF0;
+  text-align: left;
+  padding: 0; /* Ensure no padding */
+  margin: 0; /* Ensure no margin */
+  transition: color 0.2s ease;
+}
+
+.experience-header:hover .experience-company {
+  color: rgba(243, 252, 240, 0.95);
+}
+
+.experience-date {
+  font-size: 14px;
+  color: rgba(243, 252, 240, 0.7);
+  text-align: right;
+  font-style: italic;
+  white-space: nowrap; /* Keep date on one line */
+  padding: 0; /* Ensure no padding */
+  margin: 0; /* Ensure no margin */
+}
+
+/* Removed collapsible functionality from individual experience entries */
+
+.experience-position {
+  text-align: left;
+  font-size: 16px;
+  color: rgba(243, 252, 240, 0.85);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+@media screen and (max-width: 640px) {
+  .experience-header {
+    grid-template-columns: 1fr;
+    gap: 8px; /* Smaller gap on mobile */
+  }
+  
+  .experience-date {
+    text-align: left;
+    margin-top: 4px;
+  }
+  
+  .experience-position {
+    text-align: left;
+  }
+}
+
+/* Experience bullet points list */
+.experience-duties {
+  margin-top: 8px;
+  margin-left: 20px;
+  padding-left: 0;
+  list-style-type: disc;
+  list-style-position: outside;
+}
+
+.experience-duties li {
+  font-size: 15px;
+  color: rgba(243, 252, 240, 0.8);
+  line-height: 1.6;
+  margin-bottom: 6px;
+  padding-left: 8px;
+  text-align: left;
+}
+
+.experience-duties li::marker {
+  color: rgba(243, 252, 240, 0.6);
+}
+
+@media screen and (max-width: 640px) {
+  .experience-duties {
+    margin-left: 16px;
+  }
+  
+  .experience-duties li {
+    font-size: 14px;
+  }
+}
+
+/* Resume Summary Section */
+/* Summary Section - Collapsible */
+.resume-summary.summary-section {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  width: 100%;
+}
+
+.summary-header {
+  cursor: pointer;
+  user-select: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  position: relative;
+  padding: 8px 12px;
+  padding-left: 24px;
+  margin-bottom: 4px;
+}
+
+.summary-header:hover {
+  background-color: rgba(243, 252, 240, 0.05);
+}
+
+.summary-header:active {
+  transform: scale(0.98);
+  background-color: rgba(243, 252, 240, 0.1);
+}
+
+.summary-header::before {
+  content: '▶';
+  font-size: 10px;
+  color: rgba(243, 252, 240, 0.7);
+  transition: transform 0.3s ease, color 0.2s ease;
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.summary-header:hover::before {
+  color: rgba(243, 252, 240, 0.9);
+}
+
+.summary-section.collapsed .summary-header::before {
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.summary-header h3 {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.summary-header:hover h3 {
+  color: rgba(243, 252, 240, 0.95);
+}
+
+.summary-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 1000px;
+  opacity: 1;
+}
+
+.summary-section.collapsed .summary-content {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.summary-content p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(243, 252, 240, 0.85);
+  text-align: center;
+  margin: 0;
+  padding: 12px 20px;
+}
+
+@media screen and (max-width: 640px) {
+  .summary-content p {
+    font-size: 14px;
+    padding: 12px 10px;
   }
 }

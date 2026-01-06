@@ -71,7 +71,7 @@
               </div>
               <nav class="left">
                   <a href="index.html">My Work</a>
-                  <a href="aboutme.html">About Me</a>
+                  <a href="aboutme.html">Resume</a>
                   <a href="gallery.html">Gallery</a>
                   <a href="codesamples.html">Code Samples</a>
               </nav>
@@ -85,153 +85,57 @@
 <body>
   <div class = "container">
       <div class = "box">
-        <p class="blurb"> <h1>ScheduleDirector.cs</h1> <br><br> Schedule Director System Created For Learning And Development Purposes. I wanted to try and recreate the Radiant AI System from The Elder Scrolls IV: Oblviion. An event bus system was used to create and access the events. <br><br>The way the system works is that every NPC has their own daily and weekly schedule, and this script checks the current day, hour, and minute, then basically sends out an event to all listeners that says "Do you have something to do right now? If you do, then do it." I had initally set up a system where every NPC was checking if they had an event every in-game minute, but this didnt feel very expandable. So, this is my current solution that should allow for scalability. <br><br> </rb> </p>
-        <pre class = "line-numbers">
-          <code class = "language-csharp">
-            public class ScheduleDirector : MonoBehaviour
-            {
-                [SerializeField] private List<CharacterSchedule> characterSchedules;
-        
-                private EventBinding<TimeChangeEvent> timeChangeEventBinding;
-                private EventBinding<AddNewScheduleEvent> addNewScheduleEventBinding;
-        
-                private void OnEnable()
-                {
-                    timeChangeEventBinding = new EventBinding<TimeChangeEvent>(OnTimeChanged);
-                    EventBus<TimeChangeEvent>.Register(timeChangeEventBinding);
-        
-                    addNewScheduleEventBinding = new EventBinding<AddNewScheduleEvent>(OnNewScheduleAdded);
-                    EventBus<AddNewScheduleEvent>.Register(addNewScheduleEventBinding);
-                }
-        
-                private void OnDisable()
-                {
-                    EventBus<TimeChangeEvent>.Deregister(timeChangeEventBinding);
-                    EventBus<AddNewScheduleEvent>.Deregister(addNewScheduleEventBinding);
-                }
-        
-                private void OnNewScheduleAdded(AddNewScheduleEvent scheduleEvent)
-                {
-                    characterSchedules.Add(scheduleEvent.schedule);
-                }
-        
-                private void OnTimeChanged(TimeChangeEvent timeEvent)
-                {
-                    // 1. Loop through list of schedules
-                    foreach (CharacterSchedule schedule in characterSchedules)
-                    {
-                        // 2. If schedule has no tasks for today, do not continue
-                        List<Task> tasksForToday = schedule.weeklySchedule.GetTasksForDay(timeEvent.currentDay);
-        
-                        if (tasksForToday != null)
-                        {
-                            // 3. Otherwise, look through each task and see if it corresponds to the appropriate time
-                            foreach (Task task in tasksForToday)
-                            {
-                                if (task.startHour == timeEvent.currentHour && task.startMinute == timeEvent.currentMinute)
-                                {
-                                    // 4. If so, execute the task
-                                    task.ExecuteTask(schedule.GetEntity());
-                                }
-                            }
-                            
-                        }
-                    }
-                }
-          </code>
-        </pre>
-      </div>
-      <br>
-      <div class = "box">
-        <p class="blurb"> <h1>TenLinesOfCode.cs</h1> <br><br> Entire script for my 10 Lines of Code game challenge. The goal is to make a game in 10 lines of code or less. For readability purposes I did not include function names, nor the areas they enclosed. An additonal wrinkle I included was that I could not infinitely stack lines: so no "if (x) { Line1; Line2; Line3;}" as I felt it went against the spirit of the challenge. To achieve this, I limited myself to one semicolon per line. <br><br>  You can check out the game at <a href="games/tenLines/index.html">THIS</a> link. It is a fairly simple asteroids type game. I was unable to get a health/death system working within these confines, but I'm fairly happy with what I accomplished in 10 lines (despite how horrendous it is to read).<br><br> </rb> </p>
-        <pre class = "line-numbers">
-          <code class = "language-csharp">
-            public class TenLinesOfCode : MonoBehaviour
-            {
-                public void Update() { GameLoop(); }
-            
-                public void GameLoop()
-                {
-                    // Player Loop and Controls
-                    /* 01 */ GameObject.Find("Player").transform.position += (GameObject.Find("Player").transform.up * Input.GetAxis("Vertical")) * Time.deltaTime * 3f;
-                    /* 02 */ if (Input.GetKeyDown(KeyCode.Space)) { GameObject bullet = Instantiate(Resources.Load("Bullet"), GameObject.Find("Player").transform.position, Quaternion.identity) as GameObject; bullet.GetComponent<Rigidbody2D>().velocity = GameObject.Find("Player").transform.up * 3000 * Time.deltaTime; Destroy(bullet, 3f);
-                    /* 03 */ GameObject.Find("AudioSource").GetComponent<AudioSource>().PlayOneShot(Resources.Load("Laser") as AudioClip); }
-                    /* 04 */ if (Input.GetMouseButton(0) || Input.GetMouseButton(1)) { GameObject.Find("Player").transform.Rotate(Vector3.forward, (Input.GetMouseButton(0)? 100 : -100) * Time.deltaTime); }
-                    /* 05 */ Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position,GameObject.Find("Player").transform.position + new Vector3(0,0,-10), Time.deltaTime * 10f);
-                    
-                    // Audio
-                    /* 06 */ if (Input.GetKeyDown(KeyCode.Space)) { GameObject.Find("AudioSource").GetComponent<AudioSource>().PlayOneShot(Resources.Load("Laser") as AudioClip);}
-                    
-                    // Asteroid Spawning
-                    /* 07 */ if (Time.frameCount % 120 == 0 && GameObject.FindGameObjectsWithTag("Asteroid").Length < 20) { GameObject asteroid = Instantiate(Resources.Load("Asteroid") as GameObject, GameObject.Find("Player").transform.position + new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), 0), Quaternion.identity);
-                    /* 08 */ asteroid.GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-100f, 100f); }
-                    /* 09 */ foreach (GameObject asteroid in GameObject.FindGameObjectsWithTag("Asteroid")) { if (Physics2D.OverlapCircle(asteroid.transform.position, 1f, LayerMask.GetMask("Projectile"))) { Destroy(asteroid); 
-                    /* 10 */ GameObject.Find("Score").GetComponent<TMP_Text>().text = (int.Parse(GameObject.Find("Score").GetComponent<TMP_Text>().text) + 1).ToString(); }
-                    }
-                }
-            }
-          </code>
-        </pre>
-      </div>
-      <br>
-      <div class = "box">
-        <p class="blurb"> <h1>InputReader.cpp</h1> <br><br> CSV File Importer made for a work project (used with permission). It's a pretty straightforward input reader, and I use it to parse manufacturer data sheets to create an internal price software for salespeople to use. <br><br> </rb> </p>
-        <pre class = "line-numbers">
-          <code class = "language-csharp">
-              #include "InputReader.h"
-              using namespace std;
-              
-              InputReader::InputReader(string _fileNameIn) {
-                importedFile = FileImport(_fileNameIn);
-              }
-              
-              InputReader::~InputReader() {}
-              
-              // SPLITS STRING BY A DELIMITER AND RETURNS A VECTOR OF STRINGS
-              vector<string> InputReader::split(const string& s, char delimiter) {
-                vector<string> tokens;
-                string token;
-                istringstream tokenStream(s);
-              
-                while (getline(tokenStream, token, delimiter)) {
-                  tokens.push_back(token);
-                }
-              
-                return tokens;
-              }
-              
-              // IMPORTS FILE
-              vector<vector<string>>* InputReader::FileImport(const string _fileNameIn) {
-                ifstream input{_fileNameIn};
-              
-                string line;
-              
-                auto* columns = new vector<vector<string>>;
-                bool firstLine = true;
-              
-                while (getline(input, line)) {
-                  vector<string> values = split(line , ',');
-              
-                  if (firstLine) {
-                    columns->resize(values.size());
-                    firstLine = false;
-                  }
-              
-                  for (size_t i = 0; i < values.size(); i++) {
-                    (*columns)[i].push_back(values[i]);
-                  }
-                }
-              
-                input.close();
-              
-                return columns;
-              }
-          </code>
-        </pre>
-      </div>
-      <br>
-  </div>
+        <p class="blurb"> <h1>Adaptive Encounter Sandbox</h1> <br></rb> </p>
+        <h3>Unreal Engine 5 | C++ Gameplay & AI Systems</h3><br>
 
+        Adaptive Encounter Sandbox is a gameplay-focused Unreal Engine 5 prototype built to explore scalable AI decision-making, animation-driven combat, and data-driven encounter design. The project emphasizes clean architecture, extensibility, and performance awareness over content volume. <br><br>
+        <a href="https://github.com/kealmcking/AdaptiveEncounterSandbox">Github Repository</a>
+        <br>
+        <a href="https://github.com/kealmcking/AdaptiveEncounterSandbox">Playable Demo</a>
+      </div>
+      <br>
+      <div class = "box">
+        <p class="blurb"> <h1>TenLinesOfCode.cs</h1> <br><br> 
+          Entire script for my 10 Lines of Code game challenge. 
+          The goal is to make a game in 10 lines of code or less. 
+          For readability purposes I did not include function names, nor the areas they enclosed. 
+          An additonal wrinkle I included was that I could not infinitely stack lines: so no "if (x) { Line1; Line2; Line3;}" as I felt it went against the spirit of the challenge. 
+          To achieve this, I limited myself to one semicolon per line. <br><br>  
+          It is a fairly simple asteroids type game.
+          I was unable to get a health/death system working within these confines, but I'm fairly happy with what I accomplished in 10 lines (despite how horrendous it is to read).
+          <br><br> </rb> </p>
+          <a href="games/tenLines/index.html">Playable Demo</a>.
+        <pre class = "line-numbers">
+          <code class = "language-csharp">
+public class TenLinesOfCode : MonoBehaviour
+{
+  public void Update() { 
+    GameLoop(); 
+  }
+            
+    public void GameLoop()
+    {
+        // Player Loop and Controls
+        /* 01 */ GameObject.Find("Player").transform.position += (GameObject.Find("Player").transform.up * Input.GetAxis("Vertical")) * Time.deltaTime * 3f;
+        /* 02 */ if (Input.GetKeyDown(KeyCode.Space)) { GameObject bullet = Instantiate(Resources.Load("Bullet"), GameObject.Find("Player").transform.position, Quaternion.identity) as GameObject; bullet.GetComponent<Rigidbody2D>().velocity = GameObject.Find("Player").transform.up * 3000 * Time.deltaTime; Destroy(bullet, 3f);
+        /* 03 */ GameObject.Find("AudioSource").GetComponent<AudioSource>().PlayOneShot(Resources.Load("Laser") as AudioClip); }
+        /* 04 */ if (Input.GetMouseButton(0) || Input.GetMouseButton(1)) { GameObject.Find("Player").transform.Rotate(Vector3.forward, (Input.GetMouseButton(0)? 100 : -100) * Time.deltaTime); }
+        /* 05 */ Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position,GameObject.Find("Player").transform.position + new Vector3(0,0,-10), Time.deltaTime * 10f);
+                    
+        // Audio
+        /* 06 */ if (Input.GetKeyDown(KeyCode.Space)) { GameObject.Find("AudioSource").GetComponent<AudioSource>().PlayOneShot(Resources.Load("Laser") as AudioClip);}
+                    
+        // Asteroid Spawning
+        /* 07 */ if (Time.frameCount % 120 == 0 && GameObject.FindGameObjectsWithTag("Asteroid").Length < 20) { GameObject asteroid = Instantiate(Resources.Load("Asteroid") as GameObject, GameObject.Find("Player").transform.position + new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), 0), Quaternion.identity);
+        /* 08 */ asteroid.GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-100f, 100f); }
+        /* 09 */ foreach (GameObject asteroid in GameObject.FindGameObjectsWithTag("Asteroid")) { if (Physics2D.OverlapCircle(asteroid.transform.position, 1f, LayerMask.GetMask("Projectile"))) { Destroy(asteroid); 
+        /* 10 */ GameObject.Find("Score").GetComponent<TMP_Text>().text = (int.Parse(GameObject.Find("Score").GetComponent<TMP_Text>().text) + 1).ToString(); }
+      }
+}
+          </code>
+        </pre>
+      </div>
+      <br>
 </body>
 
 <script>
