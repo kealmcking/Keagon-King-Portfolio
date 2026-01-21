@@ -1476,8 +1476,10 @@ img {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 30%;
+  margin-top: 20px;
 }
 @media screen and (max-width: 640px) {
   .workscreenshots {
@@ -1504,6 +1506,31 @@ img {
     margin-top: 20px;
     margin-left: 4px;
     margin-right: 4px;
+  }
+}
+
+/* Video Section - Optional */
+.workvideo {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.workvideo iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  border: none;
+}
+
+@media screen and (max-width: 640px) {
+  .workvideo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .workvideo iframe {
+    width: 100%;
   }
 }
 
@@ -2871,4 +2898,73 @@ footer {
     font-size: 14px;
     padding: 12px 10px;
   }
+}
+
+/* Game Section - Collapsible */
+.game-section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.game-section-header {
+  cursor: pointer;
+  user-select: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  position: relative;
+  padding: 8px 12px;
+  padding-left: 24px;
+  margin-bottom: 4px;
+}
+
+.game-section-header:hover {
+  background-color: rgba(243, 252, 240, 0.05);
+}
+
+.game-section-header:active {
+  transform: scale(0.98);
+  background-color: rgba(243, 252, 240, 0.1);
+}
+
+.game-section-header::before {
+  content: '▶';
+  font-size: 10px;
+  color: rgba(243, 252, 240, 0.7);
+  transition: transform 0.3s ease, color 0.2s ease;
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.game-section-header:hover::before {
+  color: rgba(243, 252, 240, 0.9);
+}
+
+.game-section.collapsed .game-section-header::before {
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.game-section-header h1 {
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.game-section-header:hover h1 {
+  color: rgba(243, 252, 240, 0.95);
+}
+
+.game-section-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 5000px;
+  opacity: 1;
+}
+
+.game-section.collapsed .game-section-content {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
