@@ -740,10 +740,12 @@ code {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   margin-top: 20px;
+  overflow: visible;
 }
 
 .game-link {
   text-decoration: none; /* Remove underline from links */
+  overflow: visible;
 }
 
 .game-item {
@@ -2956,7 +2958,7 @@ footer {
 }
 
 .game-section-content {
-  overflow: hidden;
+  overflow: visible;
   transition: max-height 0.3s ease, opacity 0.3s ease;
   max-height: 5000px;
   opacity: 1;

@@ -114,21 +114,37 @@
           </div>
         </div>
 
+        <div class="workvideo fade-in-content">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+
         <div class="header">
           <h3>Game Info</h3>
           <div class="line"></div>
         </div>
-        <p class="blurb"> Combat-Ready NPC AI Sandbox is a gameplay AI systems project built in Unreal Engine 5 using C++, focused on designing believable and scalable NPC behavior for combat-driven games. Rather than shipping a full game, the project explores how perception, memory, and decision-making can be structured into a clean, extensible AI architecture. Proven locomotion and animation systems are reused so development effort remains centered on AI behavior and system design. <br><br>
-
-          The AI framework supports autonomous patrol, player detection through sight and sound, pursuit while line-of-sight is maintained, investigation of last known locations, and reasoned combat decisions based on distance, health, and internal state. Behavior is driven by a Behavior Tree and Blackboard, with AI Perception supplying sensory input and custom services managing short-term memory and state transitions. All behaviors are interruptible and reactive, allowing NPCs to respond immediately to changing conditions rather than relying on scripted sequences or fixed timers. <br><br>
-          
-          This project demonstrates a production-oriented approach to gameplay AI, emphasizing separation of concerns, declarative decision logic, and designer-tunable systems. The architecture is built to scale into more advanced combat reasoning, archetype-driven behavior, and debugging visualization without structural rewrites. The result is an AI sandbox that prioritizes clarity, debuggability, and long-term extensibility, reflecting how combat AI is developed and iterated on in professional game development environments. </p>
+        <p class="blurb"> Combat Ready AI Sandbox is a project I made to deepen my understanding of AI systems in Unreal Engine 5. It's a small arena, with a few agents each having their own tunable archetype, which allows them to each have different behaviors in the same system. The player can move, shoot, traverse, etc. The movement and traversal was pre-packaged in the Game Animation Sample, as I wanted to focus first and foremost on making a good AI system. I did implement shooting and reloading for the player, but primarily because I had to implement it anyway for the AI, so I had already done most of the work. <br><br> I'm proud of this little system I built, and I plan to take the knowledge gained and build even more interesting and complex AI systems.<br><br> </p>
+        
+        <div class="header">
+          <h3>Features Implemented</h3>
+          <div class="line"></div>
+        </div>
+        <p class="blurb">
+          • Implemented autonomous patrol behavior with configurable waypoint systems.<br>
+          • Built player detection systems using sight and sound through AI Perception framework.<br>
+          • Developed pursuit mechanics that maintain line-of-sight tracking and dynamic pathfinding.<br>
+          • Created investigation system for NPCs to search last known player locations when line-of-sight is lost.<br>
+          • Designed combat decision-making logic based on distance, health, and internal state evaluation.<br>
+          • Structured AI behavior using Behavior Tree and Blackboard architecture for declarative decision logic.<br>
+          • Implemented custom services for short-term memory management and state transitions.<br>
+          • Built interruptible and reactive behavior system allowing immediate response to changing conditions.<br>
+          • Designed production-oriented architecture with separation of concerns and designer-tunable systems.<br>
+          • Created scalable framework supporting future expansion into advanced combat reasoning and archetype-driven behavior.
+        </p>
+        
         <p>...</p>
 
 
-        <div class="workvideo fade-in-content">
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
+
 
         <div class="worklinks">
           <!-- ============================= Game Links ============================= -->
