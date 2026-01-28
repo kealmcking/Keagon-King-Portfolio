@@ -22,6 +22,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css" integrity="sha512-tk4nGrLxft4l30r9ETuejLU0a3d7LwMzj0eXjzc16JQj+5U1IeVoCuGLObRDc3+eQMUcEQY1RIDPGvuA7SNQ2w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
   <script src="https://kit.fontawesome.com/e999b88b1e.js" crossorigin="anonymous"></script>
+  <!-- Prism.js for syntax highlighting -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
   <!-- ============================= Scripts ============================= -->
   <script src="./index/js"></script>
   <script src="./index/analytics.js.download"></script>
@@ -48,32 +55,28 @@
 
 <body>
   <div class="wrapper-masthead fade-me-in">
-    <div class="container">
-      <header class="masthead clearfix">
-          <img class="site-avatar large" src="images/37821318.jpg">
-          <div class="site-info">
-            <h1 class="site-name"><a href="index.html">Keagon King</a></h1>
-            <div class="site-icons">
-              <a href="https://github.com/kealmcking">
-                <i class="fa-brands fa-github"></i>
-              </a>
-              <a href="https://kealmcking.itch.io/">
-                <i class="fa-brands fa-itch-io"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/keagonking/">
-                <i class="fa-brands fa-linkedin"></i>
-              </a>
+      <div class="container">
+        <header class="masthead clearfix">
+            <img class="site-avatar large" src="images/37821318.jpg">
+            <div class="site-info">
+              <h1 class="site-name"><a href="index.html">Keagon King</a></h1>
+              <p class="site-subtitle">Gameplay &amp; AI Programmer</p>
             </div>
-            <nav class="left">
+            <nav class="header-nav">
                 <a href="index.html">My Work</a>
+                <span class="nav-divider">|</span>
                 <a href="aboutme.html">Resume</a>
+                <span class="nav-divider">|</span>
                 <a href="gallery.html">Gallery</a>
+                <span class="nav-divider">|</span>
+                <a href="GameJams.html">Game Jams</a>
                 <!-- <a href="codesamples.html">Code Samples</a> -->
             </nav>
-        </div>
-      </header>
+        </header>
+    </div>
   </div>
-</div>
+
+
 
   <div id="main" role="main" class="container">
     <div class="bannercontainer fade-in-content">
@@ -102,10 +105,7 @@
               </div>
             </div>
             <div class="release">
-              <div class="entry">
-                <p>Dev Time:</p>
-                <p class="value">1 Month</p>
-              </div>
+
               <div class="entry">
                 <p>Availability:</p>
                 <p class="value"><a href="https://github.com/kealmcking/Combat-Ready-AI-Sandbox-UE-5.7">Github</a></p>
@@ -154,15 +154,35 @@
             </a>
           </div>
         </div>
-      </div>
 
-      <div class="workscreenshots fade-in-content">
-        <!-- ============================= Screenshots ============================= -->
-        <img class="workscreenshot" src="images/combatreadynpcunreal/CombatReadyNPC-1.png">
+        <div class="header">
+          <h3>Code Explorer</h3>
+          <div class="line"></div>
+        </div>
+        <p class="blurb">
+          Browse through the codebase directly on this page. Click on any file in the tree to view its contents with syntax highlighting.
+        </p>
       </div>
     </div>
   </div>
 
+  <!-- Code Explorer Section -->
+  <div class="code-explorer-section">
+
+    
+    <!-- Code Browser -->
+    <div id="code-browser-container" 
+         data-code-browser 
+         data-repo-url="https://github.com/kealmcking/Combat-Ready-AI-Sandbox-UE-5.7"
+         data-branch="main"
+         data-max-file-size="100000"
+         data-excluded-paths=".git,node_modules,.vs,Binaries,DerivedDataCache,Intermediate,Saved,Build">
+    </div>
+  </div>
+
+  <!-- Code Browser Script -->
+  <script src="./index/code-browser.js"></script>
+  
   <script>
     // ============================= Script Code ============================= 
     // Script code remains the same

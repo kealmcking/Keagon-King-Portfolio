@@ -52,128 +52,376 @@
             <img class="site-avatar large" src="images/37821318.jpg">
             <div class="site-info">
               <h1 class="site-name"><a href="index.html">Keagon King</a></h1>
-              <div class="site-icons">
-                <a href="https://github.com/kealmcking">
-                  <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="https://kealmcking.itch.io/">
-                  <i class="fa-brands fa-itch-io"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/keagonking/">
-                  <i class="fa-brands fa-linkedin"></i>
-                </a>
-              </div>
-              <nav class="left">
-                  <a href="index.html">My Work</a>
-                  <a href="aboutme.html">Resume</a>
-                  <a href="gallery.html">Gallery</a>
-                  <!-- <a href="codesamples.html">Code Samples</a> -->
-              </nav>
-          </div>
+              <p class="site-subtitle">Gameplay &amp; AI Programmer</p>
+            </div>
+            <nav class="header-nav">
+                <a href="index.html">My Work</a>
+                <span class="nav-divider">|</span>
+                <a href="aboutme.html">Resume</a>
+                <span class="nav-divider">|</span>
+                <a href="gallery.html">Gallery</a>
+                <span class="nav-divider">|</span>
+                <a href="GameJams.html">Game Jams</a>
+                <!-- <a href="codesamples.html">Code Samples</a> -->
+            </nav>
         </header>
     </div>
   </div>
 
 <div id="main" role="main" class="container fade-in-content-slow">
+<div class="description-section">
+  <p class="description-text">
+    Gameplay & AI Programmer focused on bulding readable, maintainable, and deterministic character behaviors and gameplay systems. <br><br>
+    Experienced with Unreal Engine (C++, Blueprints) and Unity (C#), focusing on debuggable AI behavior, gameplay systems, and rapid designer iteration and tuning.
+  </p>
+  <div class="description-separator"></div>
+</div>
+
+
 <div class="game-section">
-  <div class="game-section-header">
-    <h1> Indie Games </h1>
-  </div>
-  <div class="game-section-content">
-    <div class="games-grid">
-      <a href="Everslide.html" class="game-link">
-        <div class="game-item">
-          <img src="images/everslide/Everslide1.png" alt="Everslide">
+  <div class="games-grid">
+    <div class="game-link" data-game-item>
+      <div class="game-item">
+        <div class="game-item-content">
+          <div class="game-header-row">
+            <div class="game-category">AI SYSTEM</div>
+            <div class="game-date">January 2026</div>
+          </div>
+          <h2 class="game-title">Unreal Engine 5.7 - GOAP System</h2>
+          <p class="game-description">Goal Oriented Action Planning system for creating intelligent, goal-driven AI behaviors in Unreal Engine 5.7.</p>
+          <div class="game-meta">
+            <div class="game-skills">
+              <span class="skill-tag">Unreal Engine 5.7</span>
+              <span class="skill-tag">C++</span>
+              <span class="skill-tag">AI</span>
+              
+            </div>
+            <div class="game-links">
+              <!-- Optional: per-project icon links -->
+              <a href="https://github.com/kealmcking/UE-GOAP" target="_blank" aria-label="View GOAP project on GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
         </div>
-      </a>
-      <!--
-        <a href="Everslide.html" class="game-link">
-        <div class="game-item">
+      </div>
+      <div class="game-item-expanded">
+        <div class="expanded-content-wrapper">
+          <div class="expanded-main-content">
+            <div class="expanded-description">
+              <h3>Description</h3>
+              <p>UEGOAP is a small Goal-Oriented Action Planning (GOAP) system I built in Unreal Engine 5.7 using C++. It's a clean, minimal implementation focused on making the planning process easy to understand, debug, and extend. The project separates planning from execution, uses an explicit world state to drive decisions, and supports multiple competing goals that the agent can react to as the world changes. When actions fail or conditions change, the agent replans automatically. UEGOAP is meant as a focused AI systems project, not a full-fledged game, and exists to demonstrate solid GOAP fundamentals, clear architecture, and practical game AI decision-making.</p>
+            </div>
+            <div class="expanded-features">
+              <h3>Features Implemented</h3>
+              <ul class="features-list">
+                <li>Goal-Oriented Action Planning System</li>
+                <li>Explicit World State Representation</li>
+                <li>Priority-Based Goal Evaluation</li>
+                <li>Reusable Action Definitions</li>
+                <li>Planning vs Execution Separation</li>
+                <li>Autonomous AI Agent Ownership</li>
+                <li>Failure Detection & Replanning</li>
+                <li>Minimal Interactive World Actors</li>
+                <li>GOAP Debug Visualization</li>
+                <li>Deterministic, Explainable Architecture</li>
+              </ul>
+            </div>
+          </div>
+          <div class="expanded-video">
+            <!-- No video available -->
+          </div>
+        </div>
+        <div class="expanded-screenshots">
+          <!-- Screenshots can be added here -->
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="game-link" data-game-item>
+      <div class="game-item">
+        <div class="game-item-content">
+          <div class="game-header-row">
+            <div class="game-category">AI SYSTEM</div>
+            <div class="game-date">December 2025</div>
+          </div>
+          <h2 class="game-title">Unreal Engine 5.7 - Combat-Ready NPC AI Sandbox</h2>
+          <p class="game-description">A comprehensive AI sandbox for creating combat-ready NPCs with advanced behavior systems in Unreal Engine 5.7.</p>
+          <div class="game-meta">
+            <div class="game-skills">
+              <span class="skill-tag">Unreal Engine 5.7</span>
+              <span class="skill-tag">C++</span>
+              <span class="skill-tag">AI</span>
+            </div>
+            <div class="game-links">
+              <a href="https://github.com/kealmcking/Combat-Ready-AI-Sandbox-UE-5.7" target="_blank" aria-label="View the Combat Ready AI Sandbox project on GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="game-item-expanded">
+        <div class="expanded-content-wrapper">
+          <div class="expanded-main-content">
+            <div class="expanded-description">
+              <h3>Description</h3>
+              <p>Combat Ready AI Sandbox is a project I made to deepen my understanding of AI systems in Unreal Engine 5. It's a small arena, with a few agents each having their own tunable archetype, which allows them to each have different behaviors in the same system. The player can move, shoot, traverse, etc. The movement and traversal was pre-packaged in the Game Animation Sample, as I wanted to focus first and foremost on making a good AI system. I did implement shooting and reloading for the player, but primarily because I had to implement it anyway for the AI, so I had already done most of the work. <br><br> I'm proud of this little system I built, and I plan to take the knowledge gained and build even more interesting and complex AI systems.</p>
+            </div>
+            <div class="expanded-features">
+              <h3>Features</h3>
+              <ul class="features-list">
+                <li>Implemented autonomous patrol behavior with configurable waypoint systems.</li>
+                <li>Built player detection systems using sight and sound through AI Perception framework.</li>
+                <li>Developed pursuit mechanics that maintain line-of-sight tracking and dynamic pathfinding.</li>
+                <li>Created investigation system for NPCs to search last known player locations when line-of-sight is lost.</li>
+                <li>Designed combat decision-making logic based on distance, health, and internal state evaluation.</li>
+                <li>Structured AI behavior using Behavior Tree and Blackboard architecture for declarative decision logic.</li>
+                <li>Implemented custom services for short-term memory management and state transitions.</li>
+                <li>Built interruptible and reactive behavior system allowing immediate response to changing conditions.</li>
+                <li>Designed production-oriented architecture with separation of concerns and designer-tunable systems.</li>
+                <li>Created scalable framework supporting future expansion into advanced combat reasoning and archetype-driven behavior.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="expanded-video">
+            <iframe src="https://www.youtube.com/embed/9qz_RqYxwlk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="expanded-screenshots">
+        </div>
+      </div>
+    </div>
+    <div class="description-separator"></div>
+  </div>
+</div>
+
+
+<div class="game-section">
+  <div class="games-grid">
+    <div class="game-link" data-game-item>
+      <div class="game-item">
+        <div class="game-item-image">
           <img src="images/closedcircuit/closedcircuit1.png" alt="Closed Circuit">
         </div>
-      </a>
-      -->
-    </div>
-  </div>
-</div>
-
-<div class="game-section">
-  <div class="game-section-header">
-    <h1>Unreal Systems</h1>
-  </div>
-  <div class="game-section-content">
-    <div class="games-grid">
-      <a href="CombatReadyAiSandbox.html" class="game-link">
-        <div class="game-item">
-          <img src="images/combatreadynpcunreal/CombatReadyNPC-1.png" alt="Combat-Ready NPC AI Sandbox (UE 5.7)">
+        <div class="game-item-content">
+          <div class="game-header-row">
+            <div class="game-category">INDIE GAME</div>
+            <div class="game-date">Currently in Development</div>
+          </div>
+          <h2 class="game-title">Closed Circuit</h2>
+          <p class="game-description">Build, upgrade, and automate a circuit of ever-looping machines. Turn small node chains into powerful functions and unlock exponential idle growth that never stops.</p>
+          <div class="game-meta">
+            <div class="game-skills">
+              <span class="skill-tag">Unity</span>
+              <span class="skill-tag">C#</span>
+            </div>
+            <div class="game-links">
+              <a href="https://store.steampowered.com/app/4164110/Closed_Circuit_Recursive_Idle/" target="_blank" aria-label="View Closed Circuit on Steam">
+                <i class="fa-brands fa-steam"></i>
+              </a>
+            </div>
+          </div>
         </div>
-      </a>
+      </div>
+      <div class="game-item-expanded">
+        <div class="expanded-content-wrapper">
+          <div class="expanded-main-content">
+            <div class="expanded-description">
+              <h3>Description</h3>
+              <p>Build, upgrade, and automate a circuit of ever-looping machines. Turn small node chains into powerful functions and unlock exponential idle growth that never stops.</p>
+            </div>
+            <div class="expanded-features">
+              <h3>Features</h3>
+              <ul class="features-list">
+                <li>Circuit building and automation</li>
+                <li>Node-based upgrade system</li>
+                <li>Exponential idle growth mechanics</li>
+              </ul>
+            </div>
+          </div>
+          <div class="expanded-video">
+            <!-- Video will be added here if available -->
+          </div>
+        </div>
+        <div class="expanded-screenshots">
+        </div>
+      </div>
     </div>
+    <div class="game-link" data-game-item>
+      <div class="game-item">
+        <div class="game-item-image">
+          <img src="images/everslide/Everslide1.png" alt="Everslide">
+        </div>
+        <div class="game-item-content">
+          <div class="game-header-row">
+            <div class="game-category">INDIE GAME</div>
+            <div class="game-date">November 2025</div>
+          </div>
+          <h2 class="game-title">Everslide</h2>
+          <p class="game-description">Everslide turns classic sliding puzzles into an endless, evolving experience. Test your speed, tackle daily puzzles, or unwind with infinite grids in a clean, minimalist design.</p>
+          <div class="game-meta">
+            <div class="game-skills">
+              <span class="skill-tag">Unity</span>
+              <span class="skill-tag">C#</span>
+            </div>
+            <div class="game-links">
+              <a href="https://store.steampowered.com/app/3931940/Everslide/" target="_blank" aria-label="View Everslide on Steam">
+                <i class="fa-brands fa-steam"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="game-item-expanded">
+        <div class="expanded-content-wrapper">
+          <div class="expanded-main-content">
+            <div class="expanded-description">
+              <h3>Description</h3>
+              <p>Everslide reinvents sliding puzzles with an endless series of procedurally generated grids that evolve with every move. Designed for smooth, intuitive gameplay, it combines classic puzzle mechanics with modern features to create a continuously engaging experience. Everslide was solo developed over 6 months. I took on many roles, including system design, procedural generation, UI, Steam Integration, and more. As my first commercial game, I learned a lot along the way.</p>
+            </div>
+            <div class="expanded-features">
+              <h3>Features</h3>
+              <ul class="features-list">
+                <li>Procedurally generated sliding puzzles</li>
+                <li>Endless mode with evolving grids</li>
+                <li>Daily puzzle challenges</li>
+                <li>Steam integration</li>
+                <li>Clean, minimalist UI design</li>
+              </ul>
+            </div>
+          </div>
+          <div class="expanded-video">
+            <iframe src="https://www.youtube.com/embed/HxStdOKP49M" title="Everslide Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="expanded-screenshots">
+          <img src="images/everslide/everslide2.jpg" alt="Everslide Screenshot 2">
+          <img src="images/everslide/everslide3.jpg" alt="Everslide Screenshot 3">
+          <img src="images/everslide/everslide4.jpg" alt="Everslide Screenshot 4">
+          <!-- Add more screenshots as needed -->
+        </div>
+      </div>
+    </div>
+    <div class="description-separator"></div>
   </div>
 </div>
 
 <div class="game-section">
-  <div class="game-section-header">
-    <h1>Student Group Projects</h1>
-  </div>
-  <div class="game-section-content">
-    <div class="games-grid">
-      <!--
-<a href="adaptiveencountersandbox.html" class="game-link">
-  <div class="game-item">
-    <img src="" alt="Adaptive Encounter Sandbox">
-    <h3>Adaptive Encounter Sandbox</h3>
-  <p>Unreal Engine 5 | C++ Gameplay & AI Systems</p>
-  </div>
-</a>
--->
-
-      <a href="sweettreatfactory.html" class="game-link">
-        <div class="game-item">
+  <div class="games-grid">
+    <div class="game-link" data-game-item>
+      <div class="game-item">
+        <div class="game-item-image">
           <img src="images/sweettreatfactory/Sweettreatfactory_01.png" alt="Sweet Treat Factory">
         </div>
-      </a>
-      <a href="murderathollowstone.html" class="game-link">
-        <div class="game-item">
+        <div class="game-item-content">
+          <div class="game-header-row">
+            <div class="game-category">STUDENT PROJECT</div>
+            <div class="game-date">January 2026</div>
+          </div>
+          <h2 class="game-title">Sweet Treat Factory</h2>
+          <p class="game-description">An arcade-style game where you sort desserts into their respective conveyors under a time crunch. Made for Full Sail University.</p>
+          <div class="game-meta">
+            <div class="game-skills">
+              <span class="skill-tag">Unreal Engine 5.6</span>
+              <span class="skill-tag">C++</span>
+              <span class="skill-tag">Blueprints</span>
+              <span class="skill-tag">Multiplayer</span>
+            </div>
+            <div class="game-links">
+              <a href="https://hotfixheroes.itch.io/ppvi-game" target="_blank" aria-label="View Sweet Treat Factory on Itch.io">
+                <i class="fa-brands fa-itch-io"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="game-item-expanded">
+        <div class="expanded-content-wrapper">
+          <div class="expanded-main-content">
+            <div class="expanded-description">
+              <h3>Description</h3>
+              <p>Sweet Treat Factory is a student project made for Full Sail University. It is an arcade style game where you must sort desserts into their respective conveyors under a time crunch. I was part of a team of 3, and was responsible for the core gameplay systems, data storage systems, animation implementation, as well as the local multiplayer functionality. Through the project, I learned much about Unreal Systems I was previously unfamiliar with, as well as how to use Perforce for version control. Additionally, teamwork was a very important part of the project, and I learned a lot about how to work with others to create a small complete game.</p>
+            </div>
+            <div class="expanded-features">
+              <h3>My Contributions</h3>
+              <ul class="features-list">
+                <li>Implemented core gameplay systems including the round loop and failure logic</li>
+                <li>Built dessert spawning and receiving systems with collision detection</li>
+                <li>Developed player interaction mechanics (pick up, carry, drop)</li>
+                <li>Added player controllers, GameMode logic, and level-specific rules</li>
+                <li>Implemented physics-based dessert behavior and kinematic control</li>
+                <li>Created Blueprint and C++ systems for gameplay events</li>
+                <li>Designed level setup, conveyor layouts, and camera perspectives</li>
+                <li>Added save/load functionality for game progress</li>
+                <li>Converted gameplay systems from Blueprint to C++</li>
+                <li>Implemented local multiplayer functionality for up to 2 players</li>
+              </ul>
+            </div>
+          </div>
+          <div class="expanded-video">
+            <iframe src="https://www.youtube.com/embed/F110e53OuXQ" title="Sweet Treat Factory" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="expanded-screenshots">
+        </div>
+      </div>
+    </div>
+    <div class="game-link" data-game-item>
+      <div class="game-item">
+        <div class="game-item-image">
           <img src="images/mahm/mahmicon.png" alt="Murder At Hollowstone Manor">
         </div>
-      </a>
-    </div>
-  </div>
-</div>
-
-<div class="game-section">
-  <div class="game-section-header">
-    <h1>Game Jams</h1>
-  </div>
-  <div class="game-section-content">
-    <div class="games-grid">
-      <a href="infinitemoneyglitch.html" class="game-link">
-        <div class="game-item">
-          <img src="images/infinitemoneyglitch/infinitemoneyglitch1.png" alt="Infinite Money Glitch">
+        <div class="game-item-content">
+          <div class="game-header-row">
+            <div class="game-category">STUDENT PROJECT</div>
+            <div class="game-date">October 2024</div>
+          </div>
+          <h2 class="game-title">Murder At Hollowstone Manor</h2>
+          <p class="game-description">A puzzle murder mystery game where you collect clues, interrogate suspects, and launch accusations to solve the mystery.</p>
+          <div class="game-meta">
+            <div class="game-skills">
+              <span class="skill-tag">Unity</span>
+              <span class="skill-tag">C#</span>
+            </div>
+            <div class="game-links">
+              <a href="https://kealsoft.itch.io/murder-at-hollowstone-manor" target="_blank" aria-label="View Murder At Hollowstone Manor on Itch.io">
+                <i class="fa-brands fa-itch-io"></i>
+              </a>
+            </div>
+          </div>
         </div>
-      </a>
-    <a href="poseidon.html" class="game-link">
-      <div class="game-item">
-        <img src="images/poseidon/poseidon1.png" alt="Poseidon Is Not Calm">
       </div>
-    </a>
-    <a href="sender.html" class="game-link">
-      <div class="game-item">
-        <img src="images/sender/sender1.png" alt="Sender: Arbitration">
+      <div class="game-item-expanded">
+        <div class="expanded-content-wrapper">
+          <div class="expanded-main-content">
+            <div class="expanded-description">
+              <h3>Description</h3>
+              <p>Murder at Hollowstone Manor is a puzzle murder mystery game that was made as a portfolio project for my degree. The goal was to try and make a full game within a month, and while we may not have hit that mark, I think we made something very interesting. <br><br> Itch.io Page Password: pd32024</p>
+            </div>
+            <div class="expanded-features">
+              <h3>Features</h3>
+              <ul class="features-list">
+                <li>Expanded and enhanced the player controller with additional functionality and improved movement mechanics.</li>
+                <li>Built a custom camera solution from scratch to achieve desired camera behavior when Cinemachine didn't meet requirements.</li>
+                <li>Developed a dialogue system from the ground up to allow players to speak with suspects and gather information to solve the mystery.</li>
+                <li>Implemented input system using Unity's New Input System with seamless switching between input types (keyboard, gamepad, etc.).</li>
+                <li>Created dynamic UI updates that reflect the current input method being used by the player.</li>
+                <li>Designed input enable/disable system that centralizes input management within the input system itself rather than spreading it across the project.</li>
+                <li>Integrated all input controls into the player controller and camera systems for cohesive control handling.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="expanded-video">
+            <!-- Video can be added here if available -->
+          </div>
+        </div>
+        <div class="expanded-screenshots">
+          <img src="images/mahm/mahmicon.png" alt="Murder At Hollowstone Manor">
+          <!-- Add more screenshots as needed -->
+        </div>
       </div>
-    </a>
-    <a href="bonechasm.html" class="game-link">
-      <div class="game-item">
-        <img src="images/bonechasm/bonechasm4.png" alt="Bone Chasm">
-
-      </div>
-    </a>
-    <a href="unboxingsim.html" class="game-link">
-      <div class="game-item">
-        <img src="images/unboxingSim/unboxingsimicon.png" alt="Unboxing Simulator">
-      </div>
-    </a>
     </div>
   </div>
 </div>
@@ -233,7 +481,7 @@
 
 </script>
 
-        
+<br>
 <div class="wrapper-footer">
   <div class="container">
       <footer class="footer">
@@ -243,6 +491,9 @@
           </a>
           <a href="https://kealmcking.itch.io/">
             <i class="fa-brands fa-itch-io"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/keagonking/">
+            <i class="fa-brands fa-linkedin"></i>
           </a>
         </div>
       </footer>
@@ -283,16 +534,6 @@
             }
         }
 
-        // Collapsible game sections
-        document.addEventListener('DOMContentLoaded', function() {
-            const gameSectionHeaders = document.querySelectorAll('.game-section-header');
-            gameSectionHeaders.forEach(function(header) {
-                header.addEventListener('click', function() {
-                    const gameSection = this.closest('.game-section');
-                    gameSection.classList.toggle('collapsed');
-                });
-            });
-        });
 
         // Variables
         let tickerSpeed = 0.33;
@@ -367,6 +608,35 @@
             // Start Ticker
             window.requestAnimationFrame(() => update(flickity));
         }
+
+        // Expandable game items
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameItems = document.querySelectorAll('.game-link[data-game-item]');
+            
+            gameItems.forEach(function(gameLink) {
+                const gameItem = gameLink.querySelector('.game-item');
+                
+                gameItem.addEventListener('click', function(e) {
+                    // If the click originated on an icon link row, let the link behave normally
+                    if (e.target.closest('.game-links')) {
+                        return;
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Toggle expanded class
+                    gameLink.classList.toggle('expanded');
+                    
+                    // Close other expanded items (optional - remove if you want multiple open)
+                    gameItems.forEach(function(otherLink) {
+                        if (otherLink !== gameLink && otherLink.classList.contains('expanded')) {
+                            otherLink.classList.remove('expanded');
+                        }
+                    });
+                });
+            });
+        });
 
     </script>
 <iframe scrolling="no" frameborder="0" allowtransparency="true" src="./index/widget_iframe.2f70fb173b9000da126c79afe2098f02.html" title="Twitter settings iframe" style="display: none;"></iframe><div id="suspender_tab_manager"><template shadowrootmode="open"><div><!----><style>@import url(chrome-extension://laameccjpleogmfhilmffpdbiibgbekf/assets/tab-manager.css);</style></div></template></div><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./index/saved_resource.html"></iframe></body></html>

@@ -737,56 +737,385 @@ code {
 
 .games-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: 1fr;
   gap: 20px;
   margin-top: 20px;
   overflow: visible;
 }
 
 .game-link {
-  text-decoration: none; /* Remove underline from links */
+  text-decoration: none;
   overflow: visible;
+  display: block;
+  cursor: pointer;
+}
+
+.game-link[data-game-item] {
+  cursor: pointer;
+}
+
+.game-link[data-game-item] .game-item {
+  cursor: pointer;
 }
 
 .game-item {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  background: #252526;
+  border: 1px solid #3f3f41;
+  border-radius: 0;
   overflow: hidden;
-  text-align: center;
-  transition: transform 0.3s;
-  width: 200px; /* Fixed width */
-  height: 200px; /* Fixed height */
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  height: 200px;
+  position: relative;
+}
+
+.game-link[data-game-item] .game-item::after {
+  content: '▼';
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  color: rgba(243, 252, 240, 0.4);
+  font-size: 12px;
+  transition: transform 0.3s ease, color 0.2s ease;
+}
+
+.game-link[data-game-item].expanded .game-item::after {
+  transform: rotate(180deg);
+  color: #4fc1ff;
 }
 
 .game-item:hover {
-  transform: scale(1.05);
+  border-color: #4fc1ff;
+  transform: translateY(-2px);
 }
 
-.game-image {
-  width: 100%;
-  height: 150px; /* Fixed height */
-  background-size: cover;
-  background-position: center;
+.game-link[data-game-item] .game-item:hover::after {
+  color: #4fc1ff;
 }
 
-.game-item h3 {
-  margin: 10px 0;
-  font-size: 1.2em;
-  color: #000; /* Ensure text color is readable */
-}
-
-.game-item p {
-  padding: 0 10px 10px;
-  font-size: 0.9em;
-  color: #666;
-  flex-grow: 1; /* Ensures the description takes up remaining space */
+.game-item-image {
+  flex: 0 0 200px;
+  min-width: 200px;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  background: #1e1e1e;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+}
+
+.game-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Game items without images - content takes full width */
+.game-item:not(:has(.game-item-image)) .game-item-content {
+  width: 100%;
+}
+
+/* Fallback for browsers that don't support :has() */
+.game-item.no-image .game-item-content {
+  width: 100%;
+}
+
+.game-item-content {
+  flex: 1;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 8px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.game-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  width: 100%;
+}
+
+.game-category {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #4fc1ff;
+  margin: 0;
+  font-family: "Poppins", serif;
+}
+
+.game-date {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(243, 252, 240, 0.6);
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  flex-shrink: 0;
+}
+
+.game-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #F3FCF0;
+  margin: 0;
+  font-family: "Poppins", serif;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+
+.game-description {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #cccccc;
+  margin: 0;
+  flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  min-height: 0;
+}
+
+.game-meta {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.game-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #404040;
+  color: #cccccc;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  white-space: nowrap;
+}
+
+/* Optional per-project icon links (GitHub, Steam, Itch, etc.) */
+.game-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+  align-items: center;
+}
+
+.game-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: #333333;
+  color: #dddddd;
+  border: 1px solid #4a4a4a;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.game-links a:hover {
+  background: #4fc1ff;
+  border-color: #4fc1ff;
+  color: #0b1015;
+  transform: translateY(-1px);
+}
+
+.game-links a i {
+  pointer-events: none;
+}
+
+/* Expanded Game Item Styles */
+.game-item-expanded {
+  display: none;
+  background: #252526;
+  border: 1px solid #3f3f41;
+  border-top: none;
+  padding: 0 24px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.4s ease, padding 0.4s ease;
+}
+
+.game-link.expanded .game-item-expanded {
+  display: block;
+  max-height: 10000px;
+  opacity: 1;
+  padding: 24px;
+}
+
+.game-link.expanded .game-item {
+  border-bottom: none;
+}
+
+.expanded-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.expanded-content-wrapper:has(.expanded-video:empty) {
+  flex-direction: column;
+}
+
+.expanded-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.expanded-description,
+.expanded-features {
+  flex: 1;
+}
+
+.expanded-description h3,
+.expanded-features h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #F3FCF0;
+  margin: 0 0 12px 0;
+  font-family: "Poppins", serif;
+}
+
+.expanded-description p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(243, 252, 240, 0.85);
+  margin: 0;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features-list li {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(243, 252, 240, 0.85);
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.features-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #4fc1ff;
+  font-weight: bold;
+}
+
+.expanded-video {
+  flex: 0 0 400px;
+  min-width: 400px;
+}
+
+.expanded-video:empty {
+  display: none;
+}
+
+.expanded-video iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 4px;
+}
+
+.expanded-screenshots:empty {
+  display: none;
+}
+
+.expanded-screenshots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.expanded-screenshots img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid #3f3f41;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.expanded-screenshots img:hover {
+  transform: scale(1.02);
+  border-color: #4fc1ff;
+}
+
+@media screen and (max-width: 768px) {
+  .expanded-content-wrapper {
+    flex-direction: column;
+  }
+  
+  .expanded-video {
+    flex: 1 1 auto;
+    min-width: 100%;
+  }
+  
+  .expanded-screenshots {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .game-item {
+    flex-direction: column;
+    height: auto;
+    min-height: 200px;
+  }
+  
+  .game-item-image {
+    flex: 0 0 200px;
+    min-width: 100%;
+    width: 100%;
+    height: 200px;
+  }
+  
+  .game-item-content {
+    padding: 20px;
+    height: auto;
+    min-height: auto;
+  }
+  
+  .game-title {
+    font-size: 22px;
+  }
+  
+  .game-description {
+    font-size: 14px;
+    -webkit-line-clamp: 3;
+  }
 }
 
 .svg-icon {
@@ -992,29 +1321,234 @@ code {
   background-color: #7c7c7c;
 }
 
+/* ------------------------------
+   Gallery layout
+------------------------------ */
+
+.gallery-page {
+  padding-bottom: 40px;
+}
+
+.gallery-section {
+  margin-top: 10px;
+}
+
+.gallery-header {
+  margin-bottom: 16px;
+}
+
+.gallery-header-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #F3FCF0;
+  margin: 0;
+  font-family: "Poppins", serif;
+}
+
+.gallery-header-subtitle {
+  font-size: 14px;
+  color: rgba(243, 252, 240, 0.75);
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.gallery-card {
+  background: #252526;
+  border: 1px solid #3f3f41;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gallery-card:hover {
+  border-color: #4fc1ff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+.gallery-media {
+  position: relative;
+  background: #1e1e1e;
+  overflow: hidden;
+  max-height: 220px;
+  transition: max-height 0.3s ease;
+}
+
+.gallery-media img {
+  width: 100%;
+  display: block;
+}
+
+.gallery-content {
+  padding: 14px 18px 12px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gallery-main {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.gallery-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(243, 252, 240, 0.7);
+}
+
+.gallery-label {
+  color: #4fc1ff;
+  font-weight: 600;
+}
+
+.gallery-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #F3FCF0;
+  margin: 0;
+  font-family: "Poppins", serif;
+}
+
+.gallery-description {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #cccccc;
+  margin: 0;
+}
+
+/* .gallery-toggle-hint removed */
+
+.gallery-card.expanded .gallery-media {
+  max-height: 520px; /* Roughly ~2x the default visual height */
+}
+
+.gallery-card.expanded {
+  grid-column: 1 / -1; /* Let the expanded card take a full row */
+}
+
+.gallery-card-expanded {
+  border-top: 1px solid #3f3f41;
+  padding: 14px 18px 16px 18px;
+  display: none;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(243, 252, 240, 0.85);
+  position: relative;
+}
+
+.gallery-card.expanded .gallery-card-expanded {
+  display: block;
+}
+
+.gallery-card:not(.expanded) .gallery-nav {
+  display: none;
+}
+
+.gallery-expanded-body {
+  margin-bottom: 12px;
+}
+
+.gallery-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  pointer-events: none; /* let clicks fall through except on buttons */
+  z-index: 2;
+}
+
+.gallery-nav-btn {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid #3f3f41;
+  background: #1e1e1e;
+  color: rgba(243, 252, 240, 0.85);
+  font-size: 28px;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.gallery-nav-prev {
+  margin-left: -8px; /* float slightly off left side */
+}
+
+.gallery-nav-next {
+  margin-right: -8px; /* float slightly off right side */
+}
+
+.gallery-nav-btn:hover {
+  background: #4fc1ff;
+  border-color: #4fc1ff;
+  color: #0b1015;
+  transform: translateY(-1px);
+}
+
+.gallery-nav-btn:active {
+  transform: translateY(0);
+}
+
+@media screen and (max-width: 640px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .wrapper-masthead {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 .wrapper-masthead .container {
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-grow: 1;
+  padding-left: 0;
 }
 
 .masthead {
-  padding: 20px 0;
+  padding: 20px 0 20px 0;
   border-bottom: 1px solid #f8fcf0;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: space-between;
   flex-grow: 1;
-  justify-content: flex-start;
+  gap: 20px;
 }
 @media screen and (max-width: 640px) {
   .masthead {
     text-align: center;
     flex-direction: column;
+    align-items: center;
+    gap: 15px;
   }
 }
 
@@ -1044,10 +1578,12 @@ code {
 .site-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  text-align: center;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex: 0 0 auto;
+  text-align: left;
+  margin-left: 0;
+  padding-left: 0;
 }
 .site-info .site-icons {
   display: flex;
@@ -1063,6 +1599,14 @@ code {
   height: 32px;
   font-size: 32px;
   color: white;
+}
+
+.site-subtitle {
+  margin: 4px 0 0 0;
+  font-size: 14px;
+  color: rgba(243, 252, 240, 0.8);
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
 }
 
 .sitelinks i {
@@ -1086,8 +1630,19 @@ code {
   cursor: pointer;
   font-family: "Poppins", serif;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 22px;
   letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.site-name a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-name a:hover {
+  color: rgba(243, 252, 240, 0.9);
 }
 
 .site-description {
@@ -1121,7 +1676,51 @@ nav.left a {
   margin-left: 0px;
   margin-right: 0px;
 }
+
+.header-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 0;
+  flex: 0 0 auto;
+  font-family: "Poppins", serif;
+  font-size: 14px;
+  padding-bottom: 2px;
+}
+
+.header-nav a {
+  color: #f8fcf0;
+  text-align: right;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.header-nav a:hover,
+.header-nav a:active {
+  color: #8661C1;
+}
+
+.nav-divider {
+  color: rgba(243, 252, 240, 0.4);
+  margin: 0 8px;
+  user-select: none;
+}
+
 @media screen and (max-width: 640px) {
+  .site-info {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .header-nav {
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+  }
+  
   nav.left {
     float: none;
     margin-top: 9px;
@@ -2269,105 +2868,97 @@ footer {
 
 .about-page .workentry {
   width: auto;
-  max-width: 600px;
+  max-width: 960px;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 
-/* Resume Section - Centered and Styled */
+/* Resume Section – card-style to match game items */
 .resume-section {
-  text-align: center;
-  padding: 10px 0;
+  background: #252526;
+  border: 1px solid #3f3f41;
+  padding: 28px 32px;
+  text-align: left;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
 .resume-section .resume-name {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   color: #F3FCF0;
-  margin-top: 10px;
-  margin-bottom: 8px;
+  margin-top: 0;
+  margin-bottom: 4px;
   font-family: "Poppins", serif;
 }
 
 .resume-section .resume-title {
-  font-size: 20px;
-  color: rgba(243, 252, 240, 0.9);
-  margin-bottom: 10px;
-  font-style: italic;
+  font-size: 16px;
+  color: rgba(243, 252, 240, 0.85);
+  margin-bottom: 12px;
   font-weight: 500;
+  letter-spacing: 0.3px;
 }
 
 .resume-section .resume-contact {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 12px 24px;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: rgba(243, 252, 240, 0.85);
 }
 
 .resume-section .resume-contact p {
-  font-size: 16px;
-  color: rgba(243, 252, 240, 0.85);
   margin: 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
 }
 
 .resume-section .resume-contact i {
-  width: 20px;
+  width: auto;
   text-align: center;
   color: rgba(243, 252, 240, 0.7);
 }
 
 .resume-section .resume-contact a {
-  color: rgba(243, 252, 240, 0.85);
+  color: rgba(243, 252, 240, 0.9);
   text-decoration: none;
-  transition: color 0.2s ease;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .resume-section .resume-contact a:hover {
-  color: #F3FCF0;
-  text-decoration: underline;
+  color: #4fc1ff;
+  border-color: #4fc1ff;
 }
 
 @media screen and (max-width: 640px) {
+  .resume-section {
+    padding: 20px 18px;
+  }
+
   .resume-section .resume-name {
-    font-size: 24px;
+    font-size: 22px;
   }
   
   .resume-section .resume-title {
-    font-size: 18px;
-  }
-  
-  .resume-section .resume-contact p {
     font-size: 14px;
   }
-}
-
-/* Update resume-contact to not center experience entries */
-.resume-section .resume-contact {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: center;
-  margin-top: 10px;
-}
-
-/* Override alignment for experience entries container */
-.resume-section .resume-contact > h3 {
-  width: 200%;
-  text-align: center;
-  margin-top: 3px;
-  margin-bottom: 2px;
+  
+  .resume-section .resume-contact {
+    font-size: 13px;
+  }
 }
 
 /* Section divider lines */
 .resume-section .line {
   width: 100%;
   height: 1px;
-  background-color: rgba(243, 252, 240, 0.2);
-  margin: 3px 0;
+  background-color: rgba(243, 252, 240, 0.12);
+  margin: 16px 0;
   border: none;
 }
 
@@ -2890,7 +3481,7 @@ footer {
   font-size: 15px;
   line-height: 1.7;
   color: rgba(243, 252, 240, 0.85);
-  text-align: center;
+  text-align: left;
   margin: 0;
   padding: 12px 20px;
 }
@@ -2902,71 +3493,558 @@ footer {
   }
 }
 
+/* Description Section */
+.description-section {
+  margin-top: 0px;
+  margin-bottom: 40px;
+  width: 100%;
+  text-align: left;
+  padding-bottom: 20px;
+}
+
+.description-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(243, 252, 240, 0.85);
+  margin: 0 0 20px 0;
+  padding: 0;
+}
+
+.description-separator {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(243, 252, 240, 0.2);
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 640px) {
+  .description-section {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+  }
+  
+  .description-text {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .description-separator {
+    margin-top: 15px;
+  }
+}
+
 /* Game Section - Collapsible */
 .game-section {
-  margin-top: 20px;
+  margin-top: 00px;
   margin-bottom: 20px;
   width: 100%;
 }
 
 .game-section-header {
-  cursor: pointer;
-  user-select: none;
-  border-radius: 4px;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  position: relative;
   padding: 8px 12px;
-  padding-left: 24px;
-  margin-bottom: 4px;
-}
-
-.game-section-header:hover {
-  background-color: rgba(243, 252, 240, 0.05);
-}
-
-.game-section-header:active {
-  transform: scale(0.98);
-  background-color: rgba(243, 252, 240, 0.1);
-}
-
-.game-section-header::before {
-  content: '▶';
-  font-size: 10px;
-  color: rgba(243, 252, 240, 0.7);
-  transition: transform 0.3s ease, color 0.2s ease;
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.game-section-header:hover::before {
-  color: rgba(243, 252, 240, 0.9);
-}
-
-.game-section.collapsed .game-section-header::before {
-  transform: translateY(-50%) rotate(-90deg);
+  margin-bottom: 16px;
 }
 
 .game-section-header h1 {
   margin: 0;
-  transition: color 0.2s ease;
-}
-
-.game-section-header:hover h1 {
-  color: rgba(243, 252, 240, 0.95);
 }
 
 .game-section-content {
   overflow: visible;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-  max-height: 5000px;
-  opacity: 1;
 }
 
-.game-section.collapsed .game-section-content {
-  max-height: 0;
-  opacity: 0;
+/* Code Browser Styles */
+.code-explorer-section {
+  width: 100%;
+  margin: 60px 0;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.code-explorer-section .header {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 20px;
+  padding: 0 10px;
+}
+
+.code-explorer-section .blurb {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 30px;
+  padding: 0 10px;
+}
+
+.code-browser {
+  margin: 0 auto;
+  border: 1px solid rgba(243, 252, 240, 0.2);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: calc(100vw - 2400px);
+  max-width: calc(100vw - 2400px);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.code-browser-header {
+  padding: 15px 40px;
+  background: rgba(243, 252, 240, 0.05);
+  border-bottom: 1px solid rgba(243, 252, 240, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.code-browser-header h3 {
+  margin: 0;
+  color: rgba(243, 252, 240, 0.9);
+  font-size: 18px;
+}
+
+.code-browser-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.repo-name {
+  color: rgba(243, 252, 240, 0.7);
+  font-size: 14px;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.github-link {
+  color: rgba(243, 252, 240, 0.8);
+  text-decoration: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.github-link:hover {
+  color: rgba(243, 252, 240, 1);
+}
+
+.code-browser-content {
+  display: flex;
+  height: 800px;
+  overflow: hidden;
+  align-items: stretch;
+}
+
+.code-browser-sidebar {
+  width: auto;
+  min-width: 200px;
+  max-width: 25%;
+  border-right: 1px solid rgba(243, 252, 240, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  overflow-x: visible;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+
+.file-tree-container {
+  padding: 12px 20px;
+  width: max-content;
+  min-width: 100%;
+}
+
+.file-tree {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  width: max-content;
+  min-width: 100%;
+}
+
+/* Root level file tree - no indentation */
+.file-tree-container > .file-tree {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+/* All nested ul elements - these indent relative to their parent li */
+.file-tree ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   margin-top: 0;
   margin-bottom: 0;
+  padding-left: 20px;
+  margin-left: 0;
+  display: block;
+}
+
+.tree-folder,
+.tree-file {
+  padding: 4px 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(243, 252, 240, 0.7);
+  transition: none;
+  border-radius: 4px;
+  margin: 1px 0;
+  min-height: 24px;
+  position: relative;
+  line-height: 1.4;
+  vertical-align: middle;
+  width: max-content;
+  min-width: 100%;
+}
+
+.tree-folder {
+  margin-bottom: 0;
+}
+
+/* Ensure list items themselves don't have left margin/padding that would shift them */
+.file-tree li {
+  margin-left: 0;
+  padding-left: 0;
+  display: block;
+}
+
+/* Nested ul should appear directly below parent li, indented */
+.tree-folder > ul {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Root level items - no indentation */
+.file-tree-container > .file-tree {
+  padding-left: 0;
+  border-left: none;
+}
+
+.tree-file .tree-toggle {
+  visibility: hidden; /* Hide but keep space for alignment */
+}
+
+.tree-folder:hover,
+.tree-file:hover {
+  background: transparent;
+  color: rgba(243, 252, 240, 0.7);
+}
+
+.tree-file.selected {
+  background: transparent;
+  color: rgba(243, 252, 240, 0.8);
+  font-weight: normal;
+}
+
+.tree-toggle {
+  width: 16px;
+  min-width: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.tree-toggle i {
+  font-size: 10px;
+  transition: transform 0.2s ease;
+  color: rgba(243, 252, 240, 0.6);
+  line-height: 1.4;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.tree-icon {
+  width: 16px;
+  min-width: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.tree-icon i {
+  font-size: 14px;
+  color: rgba(243, 252, 240, 0.6);
+  line-height: 1.4;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.tree-folder .tree-icon i {
+  color: rgba(255, 193, 7, 0.8);
+}
+
+.tree-name {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  min-width: 0;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.code-browser-main {
+  flex: 0 0 75%;
+  min-width: 600px;
+  max-width: 75%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+  position: relative;
+}
+
+.file-viewer-header {
+  flex: 0 0 auto;
+  padding: 12px 40px;
+  background: rgba(243, 252, 240, 0.05);
+  border-bottom: 1px solid rgba(243, 252, 240, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.file-path {
+  color: rgba(243, 252, 240, 0.8);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  word-break: break-all;
+}
+
+.file-viewer-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.view-on-github {
+  color: rgba(243, 252, 240, 0.8);
+  text-decoration: none;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.view-on-github:hover {
+  color: rgba(243, 252, 240, 1);
+}
+
+.file-viewer {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+  height: 100%;
+}
+
+.file-viewer-content {
+  flex: 1 1 0;
+  overflow-x: scroll !important;
+  overflow-y: auto;
+  padding: 20px 40px 40px 40px;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.4);
+  min-height: 0;
+  scrollbar-width: thin;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Force horizontal scrollbar to always be visible */
+.file-viewer-content::-webkit-scrollbar:horizontal {
+  display: block !important;
+  height: 12px;
+}
+
+.file-viewer-content pre {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-size: 12px;
+  line-height: 1.5;
+  min-height: 100%;
+  pointer-events: none;
+}
+
+.file-viewer-content pre * {
+  pointer-events: auto;
+}
+
+.file-viewer-content code {
+  font-family: 'Fira Code', 'Roboto Mono', monospace;
+  color: rgba(243, 252, 240, 0.9);
+  background: transparent;
+  padding: 0;
+  border: none;
+  white-space: pre;
+  word-wrap: normal;
+  overflow: visible;
+  display: block;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.file-viewer-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: rgba(243, 252, 240, 0.5);
+  text-align: center;
+  padding: 40px;
+}
+
+.file-viewer-placeholder i {
+  font-size: 48px;
+  margin-bottom: 15px;
+  opacity: 0.5;
+}
+
+.file-viewer-placeholder p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.loading,
+.error {
+  padding: 20px;
+  text-align: center;
+  color: rgba(243, 252, 240, 0.7);
+}
+
+.error {
+  color: rgba(255, 87, 87, 0.8);
+}
+
+/* Scrollbar styling for code browser */
+.code-browser-sidebar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.file-viewer-content::-webkit-scrollbar {
+  width: 8px;
+  height: 12px;
+  position: relative;
+  z-index: 999;
+}
+
+.file-viewer-content::-webkit-scrollbar-track {
+  pointer-events: auto;
+  z-index: 999;
+}
+
+.file-viewer-content::-webkit-scrollbar-thumb {
+  pointer-events: auto;
+  z-index: 999;
+}
+
+.file-viewer-content::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0.2);
+  pointer-events: auto;
+}
+
+.code-browser-sidebar::-webkit-scrollbar-track,
+.file-viewer-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  pointer-events: auto;
+}
+
+.code-browser-sidebar::-webkit-scrollbar-thumb,
+.file-viewer-content::-webkit-scrollbar-thumb {
+  background: rgba(243, 252, 240, 0.3);
+  border-radius: 4px;
+  pointer-events: auto;
+}
+
+.code-browser-sidebar::-webkit-scrollbar-thumb:hover,
+.file-viewer-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(243, 252, 240, 0.5);
+}
+
+/* Responsive design */
+@media screen and (max-width: 3000px) {
+  .code-browser {
+    width: calc(100vw - 400px);
+    max-width: calc(100vw - 400px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .code-browser {
+    width: calc(100vw - 40px);
+    max-width: calc(100vw - 40px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .code-browser-header {
+    padding: 15px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .file-viewer-header {
+    padding: 12px 20px;
+  }
+
+  .file-viewer-content {
+    padding: 20px;
+  }
+
+  .file-tree-container {
+    padding: 12px 10px;
+  }
+
+  .code-browser-content {
+    flex-direction: column;
+    height: auto;
+    max-height: 800px;
+  }
+
+  .code-browser-sidebar {
+    width: 100%;
+    max-height: 300px;
+    border-right: none;
+    border-bottom: 1px solid rgba(243, 252, 240, 0.2);
+  }
+
+  .code-browser-main {
+    min-height: 400px;
+  }
 }
