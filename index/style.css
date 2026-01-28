@@ -1330,7 +1330,14 @@ code {
 }
 
 .gallery-section {
-  margin-top: 10px;
+  margin-top: 24px;
+}
+
+.gallery-divider {
+  height: 1px;
+  width: 100%;
+  background: rgba(243, 252, 240, 0.12);
+  margin: 28px 0;
 }
 
 .gallery-header {
@@ -1356,6 +1363,18 @@ code {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
+}
+
+/* When a section has only 1 card, don't stretch it full-width */
+.gallery-grid-centered {
+  /* Keep the single-card section the same size as other cards */
+  grid-template-columns: 280px;
+  justify-content: start; /* align left like other sections */
+}
+
+/* When expanded, let it behave like other expanded cards (full width) */
+.gallery-grid-centered:has(.gallery-card.expanded) {
+  grid-template-columns: 1fr;
 }
 
 .gallery-card {
@@ -1387,6 +1406,16 @@ code {
   width: 100%;
   display: block;
 }
+
+/* Optional video in gallery media slot */
+.gallery-media iframe {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  display: block;
+}
+
 
 .gallery-content {
   padding: 14px 18px 12px 18px;
@@ -1462,6 +1491,37 @@ code {
 
 .gallery-expanded-body {
   margin-bottom: 12px;
+}
+
+.gallery-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #F3FCF0;
+  margin: 14px 0 10px 0;
+  font-family: "Poppins", serif;
+}
+
+.gallery-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gallery-features-list li {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(243, 252, 240, 0.85);
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.gallery-features-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #4fc1ff;
+  font-weight: 700;
 }
 
 .gallery-nav {
