@@ -973,13 +973,9 @@ code {
 
 .expanded-content-wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 24px;
   margin-bottom: 24px;
-}
-
-.expanded-content-wrapper:has(.expanded-video:empty) {
-  flex-direction: column;
 }
 
 .expanded-main-content {
@@ -1034,8 +1030,8 @@ code {
 }
 
 .expanded-video {
-  flex: 0 0 400px;
-  min-width: 400px;
+  width: 100%;
+  margin: 0;
 }
 
 .expanded-video:empty {
@@ -1047,6 +1043,7 @@ code {
   aspect-ratio: 16 / 9;
   border: none;
   border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .expanded-screenshots:empty {
@@ -1074,15 +1071,6 @@ code {
 }
 
 @media screen and (max-width: 768px) {
-  .expanded-content-wrapper {
-    flex-direction: column;
-  }
-  
-  .expanded-video {
-    flex: 1 1 auto;
-    min-width: 100%;
-  }
-  
   .expanded-screenshots {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
