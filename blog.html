@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog – Keagon King – I make games!</title>
+  <!-- ============================= Meta Tags ============================= -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="Blog posts by Keagon King - Gameplay & AI Programmer">
+  <meta property="og:title" content="Blog – Keagon King" />
+  <meta property="og:description" content="Blog posts by Keagon King - Gameplay & AI Programmer">
+  <meta property="og:image" content="images/37821318.jpg" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="" />
+  <meta property="og:site_name" content="" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="twitter:title" content="Blog – Keagon King" />
+  <meta name="author" content="Keagon King" />
+  <!-- ============================= Stylesheets ============================= -->
+  <link rel="stylesheet" type="text/css" href="./index/style.css">
+  <link rel="alternate" type="application/rss+xml" title="Keagon King - I make games!" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNB8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css" integrity="sha512-tk4nGrLxft4l30r9ETuejLU0a3d7LwMzj0eXjzc16JQj+5U1IeVoCuGLObRDc3+eQMUcEQY1RIDPGvuA7SNQ2w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <script src="https://kit.fontawesome.com/e999b88b1e.js" crossorigin="anonymous"></script>
+  <!-- ============================= Scripts ============================= -->
+  <script src="./index/js"></script>
+  <script src="./index/analytics.js.download"></script>
+  <script src="./index/widgets.js.download"></script>
+  <script src="./index/flickity.min.js.download"></script>
+  <!-- ============================= Twitter Widget Script ============================= -->
+  <script>
+    window.twttr = (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+      if (d.getElementById(id)) return t;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+      return t;
+    }(document, "script", "twitter-wjs"));
+  </script>
+  <style>
+    /* Blog-specific styles */
+    .blog-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .blog-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .blog-header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .blog-header p {
+      color: #888;
+      font-size: 1.1em;
+    }
+
+    .blog-posts {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .blog-post {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 30px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .blog-post:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .blog-post-meta {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+      font-size: 0.9em;
+      color: #888;
+    }
+
+    .blog-post-date {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .blog-post-category {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2px 10px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      text-transform: uppercase;
+    }
+
+    .blog-post h2 {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .blog-post h2 a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .blog-post h2 a:hover {
+      color: #4a9eff;
+    }
+
+    .blog-post-excerpt {
+      color: #aaa;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .blog-post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .blog-tag {
+      background: rgba(74, 158, 255, 0.15);
+      color: #4a9eff;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 0.85em;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #888;
+    }
+
+    .empty-state i {
+      font-size: 4em;
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+
+    .empty-state h2 {
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .empty-state p {
+      max-width: 400px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper-masthead fade-me-in">
+    <div class="container">
+      <header class="masthead clearfix">
+        <img class="site-avatar large" src="images/37821318.jpg">
+        <div class="site-info">
+          <h1 class="site-name"><a href="index.html">Keagon King</a></h1>
+          <p class="site-subtitle">Gameplay &amp; AI Programmer</p>
+        </div>
+        <nav class="header-nav">
+          <a href="index.html">My Work</a>
+          <span class="nav-divider">|</span>
+          <a href="aboutme.html">Resume</a>
+          <span class="nav-divider">|</span>
+          <a href="gallery.html">Gallery</a>
+          <span class="nav-divider">|</span>
+          <a href="GameJams.html">Game Jams</a>
+          <span class="nav-divider">|</span>
+          <a href="blog.html">Blog</a>
+          <!-- <a href="codesamples.html">Code Samples</a> -->
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <div id="main" role="main" class="container fade-in-content-slow">
+    <div class="blog-container">
+      <div class="blog-header">
+        <h1>Blog</h1>
+        <p>Thoughts on game development, AI systems, and programming</p>
+      </div>
+
+        <div class="empty-state">
+          <i class="fa-solid fa-pen-to-square"></i>
+          <h2>Coming Soon</h2>
+          <p>Blog posts are on the way! Check back soon for articles about game development, AI programming, and more.</p>
+        </div>
+
+
+        <!-- Template for future blog posts:
+        <article class="blog-post">
+          <div class="blog-post-meta">
+            <span class="blog-post-date">
+              <i class="fa-regular fa-calendar"></i>
+              February 5, 2026
+            </span>
+            <span class="blog-post-category">AI Development</span>
+          </div>
+          <h2><a href="#">Post Title Here</a></h2>
+          <p class="blog-post-excerpt">
+            A brief excerpt or summary of the blog post content goes here. 
+            This should give readers a preview of what the full article covers.
+          </p>
+          <div class="blog-post-tags">
+            <span class="blog-tag">Unreal Engine</span>
+            <span class="blog-tag">C++</span>
+            <span class="blog-tag">AI</span>
+          </div>
+        </article>
+        -->
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper-footer">
+    <div class="container">
+      <footer class="footer">
+        <div class="sitelinks">
+          <a href="https://github.com/kealmcking">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://kealmcking.itch.io/">
+            <i class="fa-brands fa-itch-io"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/keagonking/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-47528442-5', 'auto');
+    ga('send', 'pageview', {
+      'page': '/blog',
+      'title': 'Blog'
+    });
+  </script>
+  <!-- End Google Analytics -->
+
+  <script>
+    // Remove fade-in animation if coming from another page on the site
+    if(document.referrer.indexOf(window.location.hostname) > -1) {
+      let fadeMeInEls = document.querySelectorAll('.fade-me-in');
+      for(let i = 0; i < fadeMeInEls.length; i++) {
+        let fadeMeInEl = fadeMeInEls[i];
+        fadeMeInEl.classList.remove('fade-me-in');
+        fadeMeInEl.style.opacity = 1;
+      }
+    }
+  </script>
+</body>
+</html>
