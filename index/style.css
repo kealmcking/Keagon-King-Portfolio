@@ -4104,3 +4104,28 @@ footer {
     min-height: 400px;
   }
 }
+
+/* Resume Download Button */
+.resume-download-btn {
+  display: inline-block;
+  margin: 15px 0 20px 0;
+  padding: 12px 24px;
+  background: rgba(243, 252, 240, 0.1);
+  border: 1px solid rgba(243, 252, 240, 0.3);
+  border-radius: 6px;
+  color: rgba(243, 252, 240, 0.9);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.resume-download-btn:hover {
+  background: rgba(243, 252, 240, 0.2);
+  border-color: rgba(243, 252, 240, 0.5);
+  color: rgba(243, 252, 240, 1);
+}
+
+.resume-download-btn i {
+  margin-right: 8px;
+}
