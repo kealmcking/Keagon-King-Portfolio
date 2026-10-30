@@ -737,10 +737,14 @@ code {
 
 .games-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
   margin-top: 20px;
   overflow: visible;
+}
+
+.games-grid > .description-separator {
+  grid-column: 1 / -1;
 }
 
 .game-link {
@@ -748,6 +752,11 @@ code {
   overflow: visible;
   display: block;
   cursor: pointer;
+  min-width: 0;
+}
+
+.game-link.expanded {
+  grid-column: 1 / -1;
 }
 
 .game-link[data-game-item] {
@@ -758,23 +767,53 @@ code {
   cursor: pointer;
 }
 
+/*
+  Steam widgets are authored at 646×190 and ignore width/height CSS.
+  Shrink with transform: scale(), and size the wrapper to the *scaled*
+  box so layout matches what you see. scale() needs a unitless ratio
+  (length / length), e.g. calc(100cqw / 646px) — not calc(100cqw / 646).
+*/
+.steam-widget {
+  --steam-scale: 0.9;
+  width: calc(646px * var(--steam-scale));
+  height: calc(190px * var(--steam-scale));
+  overflow: hidden;
+  line-height: 0;
+  max-width: 100%;
+}
+
+.steam-widget iframe {
+  width: 646px;
+  height: 190px;
+  border: 0;
+  transform: scale(var(--steam-scale));
+  transform-origin: top left;
+}
+
+.games-grid--steam {
+  grid-template-columns: repeat(2, max-content);
+  justify-content: start;
+  column-gap: 16px;
+  row-gap: 12px;
+}
+
 .game-item {
   background: #252526;
   border: 1px solid #3f3f41;
   border-radius: 0;
   overflow: hidden;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   transition: border-color 0.2s ease, transform 0.2s ease;
-  height: 200px;
+  height: auto;
   position: relative;
 }
 
 .game-link[data-game-item] .game-item::after {
   content: '▼';
   position: absolute;
-  bottom: 20px;
-  right: 24px;
+  bottom: 14px;
+  right: 14px;
   color: rgba(243, 252, 240, 0.4);
   font-size: 12px;
   transition: transform 0.3s ease, color 0.2s ease;
@@ -795,16 +834,15 @@ code {
 }
 
 .game-item-image {
-  flex: 0 0 200px;
-  min-width: 200px;
-  width: 200px;
-  height: 200px;
+  flex: none;
+  width: 100%;
+  min-width: 0;
+  height: 150px;
   overflow: hidden;
   background: #1e1e1e;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
 }
 
 .game-item-image img {
@@ -826,12 +864,12 @@ code {
 
 .game-item-content {
   flex: 1;
-  padding: 20px 24px;
+  padding: 14px 16px 16px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 8px;
-  height: 200px;
+  gap: 6px;
+  height: auto;
   overflow: hidden;
 }
 
@@ -864,18 +902,18 @@ code {
 }
 
 .game-title {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   color: #F3FCF0;
   margin: 0;
   font-family: "Poppins", serif;
-  line-height: 1.2;
+  line-height: 1.25;
   flex-shrink: 0;
 }
 
 .game-description {
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 13px;
+  line-height: 1.45;
   color: #cccccc;
   margin: 0;
   flex: 1;
@@ -902,11 +940,11 @@ code {
 
 .skill-tag {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 4px 8px;
   background: #404040;
   color: #cccccc;
   border-radius: 4px;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 500;
   font-family: "Inter", sans-serif;
   white-space: nowrap;
@@ -1077,32 +1115,21 @@ code {
 }
 
 @media screen and (max-width: 768px) {
-  .game-item {
-    flex-direction: column;
-    height: auto;
-    min-height: 200px;
+  .games-grid,
+  .games-grid--steam {
+    grid-template-columns: 1fr;
   }
-  
+
   .game-item-image {
-    flex: 0 0 200px;
-    min-width: 100%;
-    width: 100%;
-    height: 200px;
+    height: 180px;
   }
-  
-  .game-item-content {
-    padding: 20px;
-    height: auto;
-    min-height: auto;
-  }
-  
+
   .game-title {
-    font-size: 22px;
+    font-size: 20px;
   }
-  
+
   .game-description {
     font-size: 14px;
-    -webkit-line-clamp: 3;
   }
 }
 
@@ -1876,7 +1903,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 900px;
+  max-width: 1200px;
   padding: 0 10px;
   width: 100%;
 }
